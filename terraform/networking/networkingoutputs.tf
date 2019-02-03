@@ -1,8 +1,7 @@
 
 output "delegation_setid" {
    value = "${aws_route53_delegation_set.ss_dns.id}"
-} 
- 
+}  
 
 output "delegation_nameservers" {
    value = "${aws_route53_delegation_set.ss_dns.name_servers}"

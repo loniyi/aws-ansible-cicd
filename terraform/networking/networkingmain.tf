@@ -380,6 +380,7 @@ resource "aws_lb_target_group" "ss_jenkinstg" {
 
 #-----Rocketchat Target Group
 resource "aws_lb_target_group" "ss_rocketchattg" {
+   name     = "RocketChat-TG"
    port     = 3000
    vpc_id   = "${aws_vpc.ss_vpc.id}"
    protocol = "HTTP"
@@ -387,6 +388,7 @@ resource "aws_lb_target_group" "ss_rocketchattg" {
 
 #-----Gitlab Target Group
 resource "aws_lb_target_group" "ss_gitlabtg" {
+   name     = "GitLab-TG"
    port     = 80
    vpc_id   = "${aws_vpc.ss_vpc.id}"
    protocol = "HTTP"
@@ -409,7 +411,7 @@ resource "aws_lb_target_group_attachment" "ss_rocketchattga" {
 #-----Gitlab Target Group Attachment
 resource "aws_lb_target_group_attachment" "ss_gitlabtga" {
    port             = 80
-   target_id        = "${var.jenkins_instance}"
+   target_id        = "${var.gitlab_instance}"
    target_group_arn = "${aws_lb_target_group.ss_gitlabtg.arn}"
  }
 
@@ -465,10 +467,11 @@ resource "aws_route53_zone" "ss_primaryzone" {
 
 #----Secondary Zone
 resource "aws_route53_zone" "ss_secondaryzone" {
-  name    = "${var.domain_name}.com"
+  name              = "${var.domain_name}.com"
   vpc {
-   vpc_id = "${aws_vpc.ss_vpc.id}"
+   vpc_id           = "${aws_vpc.ss_vpc.id}"
    }
+  delegation_set_id = "${aws_route53_delegation_set.ss_dns.id}"
  }
 
 #----BastionHost Route53 Record
