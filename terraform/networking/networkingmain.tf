@@ -408,7 +408,7 @@ resource "aws_lb_target_group_attachment" "ss_rocketchattga" {
 
 #-----Gitlab Target Group Attachment
 resource "aws_lb_target_group_attachment" "ss_gitlabtga" {
-   port             = 8080
+   port             = 80
    target_id        = "${var.jenkins_instance}"
    target_group_arn = "${aws_lb_target_group.ss_gitlabtg.arn}"
  }
@@ -509,7 +509,7 @@ resource "aws_route53_record" "ss_rocketchat" {
   ttl     = "300"
   name    = "rocketchat.${var.domain_name}.com"
   type    = "CNAME"
-  zone_id = "${aws_route53_zone.ss_secondaryzone.zone_id}"
+  zone_id = "${aws_route53_zone.ss_primaryzone.zone_id}"
   records = ["${aws_lb.ss_devopsalb.dns_name}"]
  }
 
@@ -518,7 +518,7 @@ resource "aws_route53_record" "ss_gitlab" {
   ttl     = "300"
   name    = "gitlab.${var.domain_name}.com"
   type    = "CNAME"
-  zone_id = "${aws_route53_zone.ss_secondaryzone.zone_id}"
+  zone_id = "${aws_route53_zone.ss_primaryzone.zone_id}"
   records = ["${aws_lb.ss_devopsalb.dns_name}"]
  }
 
