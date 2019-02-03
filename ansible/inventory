@@ -1,5 +1,5 @@
-[bastion]
-18.224.134.106
+[bastionhost]
+0.0.0.0
 
 [rocketchat]
 10.20.11.110

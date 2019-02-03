@@ -8,9 +8,6 @@
     state: present
     key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
 
-- name: Install Java 1.8.0 JDK 
-  action: yum name=java-1.8.0* state=installed
-
 - name: Install Jenkins Server
   action: yum name=jenkins state=installed
 
