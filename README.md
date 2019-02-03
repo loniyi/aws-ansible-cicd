@@ -6,7 +6,7 @@ Stack Requirements
 
 Ansible - Configuration Automation Jenkins - CI/CD Orchestration Terraform - Infrastructure Deployment Rocketchat - ChatOps Chef Inspec - Testing / Readiness Inspection GitLab Server - Version Control Hashicorp Vault - Secrets Management
 
-Getting Started
+[Getting Started]
 
 To begin using this template, you can clone the repository or Download git clone https://github.com/loniyi/aws-ansible-cicd.git
 
